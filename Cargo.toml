@@ -1,0 +1,54 @@
+[workspace]
+resolver = "2"
+members = ["api", "core", "migration"]
+
+
+[workspace.dependencies]
+monoql_api = { path = "../api" }
+monoql_core = { path = "../core" }
+
+anyhow = "1"
+async-graphql = { version = "6", features = [
+    "tokio",
+    "tracing",
+    "graphiql",
+    "dataloader",
+    "chrono",
+    "uuid",
+] }
+async-graphql-axum = "6"
+async-trait = "0.1"
+axum = { version = "0.7", features = [
+    "full",
+    "tokio",
+    "tracing",
+    "macros",
+    "headers",
+] }
+chrono = { version = "0.4", features = ["serde"] }
+dotenvy = { version = "0.15" }
+fake = { version = "2.9", features = [
+    'derive',
+    'chrono',
+    'http',
+    'uuid',
+], git = "https://github.com/cksac/fake-rs.git" }
+oso = { version = "0.27", features = [] }
+oso-derive = "0.27.0"
+sea-orm = { version = "0.12", features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+    "with-chrono",
+    "with-json",
+    "with-uuid",
+] }
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.34", features = ["macros", "rt-multi-thread", "signal"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.6", features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+] }
